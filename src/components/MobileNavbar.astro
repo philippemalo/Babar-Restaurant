@@ -1,0 +1,79 @@
+---
+import navLogo from "/Babar_05.svg";
+import menuIcon from "/menu.png";
+import drinksIcon from "/wine.png";
+import takeoutIcon from "/takeout.png";
+import calendarIcon from "/calendar.png";
+
+import "@fontsource/wendy-one";
+---
+
+<div id="mobile-navbar">
+  <a class="button" href="/Menu">
+    <p>Mange</p>
+    <img class="icon" src={menuIcon} />
+  </a>
+  <a class="button" href="/Drinks">
+    <p>Bois</p>
+    <img class="icon" src={drinksIcon} />
+  </a>
+  <a href="/">
+    <img id="navLogo" src={navLogo} />
+  </a>
+  <a class="button" href="/Takeout">
+    <p>Commande</p>
+    <img class="icon" src={takeoutIcon} />
+  </a>
+  <a class="button" href="/Reservation">
+    <p>Réserve</p>
+    <img class="icon" src={calendarIcon} />
+  </a>
+  <script defer>
+    const url = window.location.pathname;
+    console.log(url);
+    const buttons = document.getElementsByClassName("button");
+
+    for (let button of buttons) {
+      if (button.getAttribute("href") === url) {
+        button.classList.add("active");
+      }
+    }
+  </script>
+</div>
+
+<style>
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(26, 26, 26);
+    font-family: "Wendy One", sans-serif;
+    max-width: 50px;
+    cursor: pointer;
+    height: 100%;
+  }
+  @media screen and (max-width: 374px) {
+    p {
+      display: none;
+    }
+  }
+  p {
+    font-size: 14px;
+    margin: 0;
+  }
+  #navLogo {
+    max-width: 80px;
+    cursor: pointer;
+    transform: translateY(-5px);
+  }
+
+  .icon {
+    max-width: 50px;
+  }
+
+  .active {
+    border-bottom: 3px solid rgb(26, 26, 26);
+  }
+</style>
