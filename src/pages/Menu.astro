@@ -2,6 +2,7 @@
 import MobileNavbar from "../components/MobileNavbar.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
+import "@fontsource/wendy-one";
 ---
 
 <html lang="en">
@@ -15,6 +16,16 @@ import "../styles/global.css";
   </head>
   <body
     ><Navbar />
-    <MobileNavbar /></body
-  >
+    <MobileNavbar />
+    <div>Bientôt disponible...</div>
+  </body>
 </html>
+
+<style>
+  * {
+    font-family: "Wendy One", sans-serif;
+  }
+  div {
+    margin: auto;
+  }
+</style>

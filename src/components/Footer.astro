@@ -1,0 +1,69 @@
+---
+import "@fontsource/wendy-one";
+import logo from "/Babar_01.svg";
+---
+
+<footer>
+  <div id="logo">
+    <a href="/">
+      <img src={logo} />
+    </a>
+  </div>
+  <div id="socials">
+    <a href="https://www.instagram.com/babar.restaurant/" target="_blank"
+      >Instagram</a
+    >
+    <a
+      href="https://www.facebook.com/profile.php?id=100087949488816"
+      target="_blank">Facebook</a
+    >
+    <a href="tel:4503000339">(450)-330-0339</a>
+    <a href="https://github.com/philippemalo" target="_blank">Crédits</a>
+  </div>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+    margin-top: auto;
+
+    font-family: "Wendy One", sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    background-color: rgb(26, 26, 26);
+  }
+  #logo {
+    max-width: 400px;
+  }
+  #logo img {
+    max-width: 100%;
+  }
+  #socials {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 0 1vw;
+  }
+  a {
+    display: flex;
+    padding: 1rem;
+  }
+  @media screen and (max-width: 500px) {
+    footer {
+      padding-bottom: 120px;
+    }
+    #logo {
+      max-width: 75%;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+</style>

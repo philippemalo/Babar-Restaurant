@@ -1,6 +1,53 @@
+---
+import "@fontsource/wendy-one";
+import elephantRight from "/favicon.svg";
+import elephantLeft from "/favicon_left.svg";
+---
+
 <div id="navbar">
-  <a href="/Menu">Menu</a>
-  <a href="/Reservation">Réservation</a>
-  <a href="/Takeout">Pour emporter</a>
-  <a href="/Contact">Contact</a>
+  <a href="/">
+    <img src={elephantRight} />
+  </a>
+  <a class="hover-effect" href="/Menu">Menu</a>
+  <a class="hover-effect" href="/Drinks">À boire</a>
+  <a class="hover-effect" href="/Takeout">Pour emporter</a>
+  <a class="hover-effect" href="/Reservation">Réservation</a>
+  <a class="hover-effect" href="/Contact">Contact</a>
+  <a href="/">
+    <img src={elephantLeft} />
+  </a>
 </div>
+
+<style>
+  #navbar {
+    padding: 1rem;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(50, 50, 50);
+    font-family: "Wendy One", sans-serif;
+    max-height: 100%;
+    height: 50px;
+    padding: 0 8px;
+    text-transform: uppercase;
+    border-radius: 10px;
+
+    font-size: 1rem;
+  }
+  @media screen and (max-width: 800px) {
+    a {
+      font-size: 0.7rem;
+    }
+  }
+  a img {
+    max-height: 100%;
+  }
+  .hover-effect:hover {
+    color: #faf2e5;
+    background-color: rgb(50, 50, 50);
+    transition: all 0.5s ease-in-out;
+  }
+</style>
