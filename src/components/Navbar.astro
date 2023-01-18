@@ -16,11 +16,26 @@ import elephantLeft from "/favicon_left.svg";
   <a href="/">
     <img src={elephantLeft} />
   </a>
+  <script>
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+      const currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        // if scrolling up
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        // if scrolling down
+        document.getElementById("navbar").style.top = "-110px";
+      }
+      prevScrollpos = currentScrollPos;
+    };
+  </script>
 </div>
 
 <style>
   #navbar {
     padding: 1rem;
+    transition: all 0.5s ease-in-out;
   }
   a {
     display: flex;
@@ -49,5 +64,21 @@ import elephantLeft from "/favicon_left.svg";
     color: #faf2e5;
     background-color: rgb(50, 50, 50);
     transition: all 0.5s ease-in-out;
+  }
+
+  @keyframes quickShake {
+    0% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+    100% {
+      transform: rotate(-3deg);
+    }
+  }
+  img:hover {
+    animation: 0.5s ease quickShake;
+    animation-iteration-count: infinite;
   }
 </style>

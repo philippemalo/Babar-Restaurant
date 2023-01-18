@@ -4,6 +4,8 @@ import Intro from "../components/Intro.astro";
 import Navbar from "../components/Navbar.astro";
 import MobileNavbar from "../components/MobileNavbar.astro";
 import Footer from "../components/Footer.astro";
+import resto from "/resto1.jpg";
+import babar3 from "/Babar_03.svg";
 ---
 
 <html lang="en">
@@ -14,6 +16,15 @@ import Footer from "../components/Footer.astro";
     <link rel="" type="" href="" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Babar Restaurant</title>
+    <script>
+      if (history.scrollRestoration) {
+        history.scrollRestoration = "manual";
+      } else {
+        window.onbeforeunload = function () {
+          window.scrollTo(0, 0);
+        };
+      }
+    </script>
   </head>
   <body>
     <Intro />
@@ -21,6 +32,140 @@ import Footer from "../components/Footer.astro";
     <Navbar />
     <MobileNavbar />
 
+    <div id="main-container">
+      <object id="main-svg" type="image/svg+xml" data={babar3}>
+        <img src={babar3} />
+      </object>
+    </div>
+    <h3>
+      Découvrez les saveurs audacieuses et vibrantes du Moyen-Orient au cœur de
+      Bromont dans notre restaurant authentique.
+    </h3>
+    <img id="restoImg" src={resto} />
+
+    <h3>
+      Nous apprécions profondément la cuisine riche et savoureuse du
+      Moyen-Orient. Les épices audacieuses et aromatiques, les herbes fraîches
+      et parfumées et les ingrédients vibrants et colorés qui définissent ce
+      type de cuisine nous ont toujours séduits.
+    </h3>
+    <!-- <div id="elephant-container">
+      <img id="elephant" src="/elephant_right.svg" />
+    </div> -->
+    <h3>
+      Au fil des ans, notre amour pour la cuisine du Moyen-Orient n'a fait que
+      se renforcer. Nous apprécions la façon dont chaque plat raconte une
+      histoire et reflète la culture de sa région d'origine. Des ragoûts
+      réconfortants et copieux aux plateaux de mezze délicats et raffinés, on ne
+      se lasse pas de découvrir de nouvelles et délicieuses saveurs du
+      Moyen-Orient.
+    </h3>
+
     <Footer />
   </body>
+
+  <script defer>
+    // PUPILL MOVEMENT FUNCTION
+    let objectTag = document.querySelector("object");
+    objectTag.addEventListener("load", function () {
+      let pupill = objectTag.contentDocument.querySelector(".pupill");
+      let eyeball = objectTag.contentDocument.querySelector(".eyeball");
+      let body = document.getElementsByTagName("body");
+
+      document.addEventListener("mousemove", function (event) {
+        // mouse X position
+        let x = event.clientX;
+        // mouse Y position
+        let y = event.clientY;
+
+        let rect = pupill.getBoundingClientRect();
+
+        // pupill X and Y centered positions
+        let pupillX = rect.x / rect.left + rect.width / 1.5;
+        let pupillY = rect.y / rect.top + rect.height / 1.5;
+
+        // Get the maximum offset distance using the eyeball boundaries
+        let eyeballRect = eyeball.getBoundingClientRect();
+        let maxXOffset = eyeballRect.width / 3;
+        let maxYOffset = eyeballRect.height / 3;
+
+        // Calculate the actual offset values
+        let bodyRect = body.item(0).getBoundingClientRect();
+        xDiff = (maxXOffset * (x - pupillX)) / bodyRect.right;
+        yDiff = (maxYOffset * (y - pupillY)) / bodyRect.bottom;
+
+        // Apply offset
+        pupill.style.transform = "translate(" + xDiff + "px, " + -yDiff + "px)";
+      });
+    });
+
+    // ELEPHANT MOVEMENT FUNCTION
+    // let image = document.getElementById("elephant");
+    // let imageContainer = document.getElementById("elephant-container");
+    // let rect = imageContainer.getBoundingClientRect();
+    // let imageTopPos = image.getBoundingClientRect().top;
+    // let prevScrollpos = window.scrollY;
+
+    // window.onscroll = function () {
+    //   let currentScrollPos = window.scrollY;
+    //   if (
+    //     currentScrollPos > prevScrollpos &&
+    //     imageTopPos < window.innerHeight
+    //   ) {
+    //     image.style.transform = "scaleX(1)";
+    //     image.style.right = (rect.top / window.innerHeight) * rect.width + "px";
+    //   } else if (
+    //     currentScrollPos < prevScrollpos &&
+    //     imageTopPos < window.innerHeight
+    //   ) {
+    //     image.style.transform = "scaleX(-1)";
+    //     image.style.right = (rect.top / window.innerHeight) * rect.width + "px";
+    //   }
+    //   prevScrollpos = currentScrollPos;
+    // };
+  </script>
 </html>
+
+<style>
+  #main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  #main-svg {
+    width: 900px;
+    max-width: 90%;
+    pointer-events: none;
+  }
+
+  #restoImg {
+    width: 700px;
+    max-width: 90%;
+    border: 3px solid white;
+    margin: 0 auto;
+    margin-top: 3rem;
+  }
+
+  h3 {
+    font-family: "Wendy One", sans-serif;
+    font-weight: 100;
+    width: 600px;
+    max-width: 90%;
+    margin: 0 auto;
+    margin-top: 3rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  #elephant-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  #elephant {
+    position: relative;
+    width: 100px;
+    transition: 0.2s all ease-out;
+  }
+</style>
