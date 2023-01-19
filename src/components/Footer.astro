@@ -3,24 +3,27 @@ import "@fontsource/wendy-one";
 import logo from "/Babar_01.svg";
 ---
 
-<footer>
-  <div id="logo">
-    <a href="/">
-      <img src={logo} />
-    </a>
-  </div>
-  <div id="socials">
-    <a href="https://www.instagram.com/babar.restaurant/" target="_blank"
-      >Instagram</a
-    >
-    <a
-      href="https://www.facebook.com/profile.php?id=100087949488816"
-      target="_blank">Facebook</a
-    >
-    <a href="tel:4503300339">(450)-330-0339</a>
-    <a href="https://github.com/philippemalo" target="_blank">Crédits</a>
-  </div>
-</footer>
+<>
+  <div id="spacer"></div>
+  <footer>
+    <div id="logo">
+      <a href="/">
+        <img src={logo} />
+      </a>
+    </div>
+    <div id="socials">
+      <a href="https://www.instagram.com/babar.restaurant/" target="_blank"
+        >Instagram</a
+      >
+      <a
+        href="https://www.facebook.com/profile.php?id=100087949488816"
+        target="_blank">Facebook</a
+      >
+      <a href="/Contact">Contact</a>
+      <a href="https://github.com/philippemalo" target="_blank">Crédits</a>
+    </div>
+  </footer>
+</>
 
 <style>
   footer {
@@ -31,7 +34,6 @@ import logo from "/Babar_01.svg";
     padding-bottom: 2rem;
     margin-top: 3rem;
 
-    font-family: "Wendy One", sans-serif;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
     background-color: rgb(26, 26, 26);
@@ -66,5 +68,8 @@ import logo from "/Babar_01.svg";
     text-decoration: none;
     color: white;
     font-weight: bold;
+  }
+  #spacer {
+    margin: auto;
   }
 </style>

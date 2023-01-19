@@ -6,6 +6,7 @@ import MobileNavbar from "../components/MobileNavbar.astro";
 import Footer from "../components/Footer.astro";
 import resto from "/resto1.jpg";
 import babar3 from "/Babar_03.svg";
+import "@fontsource/alatsi";
 ---
 
 <html lang="en">
@@ -37,10 +38,10 @@ import babar3 from "/Babar_03.svg";
         <img src={babar3} />
       </object>
     </div>
-    <h3>
+    <h2>
       Découvrez les saveurs audacieuses et vibrantes du Moyen-Orient au cœur de
       Bromont dans notre restaurant authentique.
-    </h3>
+    </h2>
     <img id="restoImg" src={resto} />
 
     <h3>
@@ -49,9 +50,9 @@ import babar3 from "/Babar_03.svg";
       et parfumées et les ingrédients vibrants et colorés qui définissent ce
       type de cuisine nous ont toujours séduits.
     </h3>
-    <!-- <div id="elephant-container">
+    <div id="elephant-container">
       <img id="elephant" src="/elephant_right.svg" />
-    </div> -->
+    </div>
     <h3>
       Au fil des ans, notre amour pour la cuisine du Moyen-Orient n'a fait que
       se renforcer. Nous apprécions la façon dont chaque plat raconte une
@@ -60,7 +61,6 @@ import babar3 from "/Babar_03.svg";
       se lasse pas de découvrir de nouvelles et délicieuses saveurs du
       Moyen-Orient.
     </h3>
-
     <Footer />
   </body>
 
@@ -97,32 +97,54 @@ import babar3 from "/Babar_03.svg";
         // Apply offset
         pupill.style.transform = "translate(" + xDiff + "px, " + -yDiff + "px)";
       });
+
+      // BABAR LETTERS FILL COLOR CHANGE ON HOVER (WIP, DOESNT WORK AS IT IS)
+      // let babarLetters =
+      //   objectTag.contentDocument.getElementsByClassName("letter");
+
+      // function getRandomItem(arr) {
+      //   const randomIndex = Math.floor(Math.random() * arr.length);
+      //   const item = arr[randomIndex];
+      //   return item;
+      // }
+
+      // for (let i = 0; i < babarLetters.length; i++) {
+      //   console.log(babarLetters.item(i).style.fill);
+      //   babarLetters.item(i).addEventListener("mouseover", () => {
+      //     let possibleColors = [
+      //       "#A87E23",
+      //       "#FFFEFD",
+      //       "rgb(50,50,50)",
+      //       "rgb(252,241,219)",
+      //     ];
+      //     this.style.fill = getRandomItem(possibleColors);
+      //     console.log(letter.style.fill);
+      //   });
+      // }
     });
 
     // ELEPHANT MOVEMENT FUNCTION
-    // let image = document.getElementById("elephant");
-    // let imageContainer = document.getElementById("elephant-container");
-    // let rect = imageContainer.getBoundingClientRect();
-    // let imageTopPos = image.getBoundingClientRect().top;
-    // let prevScrollpos = window.scrollY;
+    let image = document.getElementById("elephant");
+    let imageContainer = document.getElementById("elephant-container");
 
-    // window.onscroll = function () {
-    //   let currentScrollPos = window.scrollY;
-    //   if (
-    //     currentScrollPos > prevScrollpos &&
-    //     imageTopPos < window.innerHeight
-    //   ) {
-    //     image.style.transform = "scaleX(1)";
-    //     image.style.right = (rect.top / window.innerHeight) * rect.width + "px";
-    //   } else if (
-    //     currentScrollPos < prevScrollpos &&
-    //     imageTopPos < window.innerHeight
-    //   ) {
-    //     image.style.transform = "scaleX(-1)";
-    //     image.style.right = (rect.top / window.innerHeight) * rect.width + "px";
-    //   }
-    //   prevScrollpos = currentScrollPos;
-    // };
+    let prevScrollpos = window.scrollY;
+
+    addEventListener("scroll", function () {
+      let imageRect = image.getBoundingClientRect();
+      console.log(imageRect.y);
+      let currentScrollPos = window.scrollY;
+      if (currentScrollPos > prevScrollpos) {
+        image.style.transform = "scaleX(-1)";
+        image.style.left =
+          (imageRect.bottom / window.innerHeight) * window.innerWidth + "px";
+        console.log(image.style.left);
+      } else if (currentScrollPos < prevScrollpos) {
+        image.style.transform = "scaleX(1)";
+        image.style.left =
+          (imageRect.bottom / window.innerHeight) * window.innerWidth + "px";
+      }
+      prevScrollpos = currentScrollPos;
+    });
   </script>
 </html>
 
@@ -137,6 +159,9 @@ import babar3 from "/Babar_03.svg";
     body {
       margin-top: 3rem;
     }
+    h2 {
+      font-size: larger;
+    }
   }
 
   #main-svg {
@@ -149,28 +174,43 @@ import babar3 from "/Babar_03.svg";
     width: 700px;
     max-width: 90%;
     border: 3px solid white;
-    margin: 0 auto;
-    margin-top: 3rem;
+    margin: 3rem auto;
   }
 
-  h3 {
-    font-family: "Wendy One", sans-serif;
+  h2 {
+    font-family: "Alatsi", sans-serif;
     font-weight: 100;
     width: 600px;
     max-width: 90%;
     margin: 0 auto;
+    text-align: center;
+    line-height: 1.5;
     margin-top: 3rem;
+  }
+  h3 {
+    font-family: "Alatsi", sans-serif;
+    font-weight: 100;
+    width: 600px;
+    max-width: 90%;
+    margin: 0 auto;
     text-align: center;
     line-height: 1.5;
   }
 
   #elephant-container {
-    width: 90%;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
+    overflow: hidden;
   }
   #elephant {
     position: relative;
     width: 100px;
-    transition: 0.2s all ease-out;
+    transition: 0.5s all ease-in-out;
   }
+
+  /* .letter:hover {
+    fill: #a87e23;
+    transition: fill 0.3s ease-out;
+  } */
 </style>

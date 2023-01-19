@@ -2,6 +2,8 @@
 import MobileNavbar from "../components/MobileNavbar.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
+import "@fontsource/alatsi";
+import Footer from "../components/Footer.astro";
 ---
 
 <html lang="en">
@@ -23,7 +25,7 @@ import "../styles/global.css";
         envoyer un message en utilisant le formulaire.
       </p>
       <div id="contact-info">
-        <div id="open-hours">
+        <div class="contact-info-section">
           <a href="https://goo.gl/maps/GFqt9hg839ZddRLJ6" target="_blank">
             <h3>Contactez-nous!</h3>
             <p>616 Rue Shefford</p>
@@ -31,20 +33,55 @@ import "../styles/global.css";
           </a>
           <a href="tel:4503300339">(450)-330-0339</a>
         </div>
-        <div id="contact-form">
+        <div class="contact-info-section">
           <h3>Envoyez-nous un message!</h3>
+          <form
+            id="form"
+            action="https://formsubmit.co/d0370e1851353769515f63ff6298813e"
+            method="POST"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value="Nouveau courriel en provenance du site web!"
+            />
+            <label>Adresse Courriel</label>
+            <input type="email" name="email" required />
+            <label>Nom</label>
+            <input type="text" name="name" required />
+            <label>Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button id="submit-button" type="submit">Envoyer</button>
+          </form>
+          <h4 id="thankyou-message" class="hide">
+            Merci de nous avoir contacté!
+          </h4>
         </div>
       </div>
     </div>
+
+    <Footer />
+    <script defer>
+      let thankyouMessage = document.getElementById("thankyou-message");
+      form.addEventListener("submit", (e) => {
+        thankyouMessage.classList.remove("hide");
+      });
+    </script>
   </body>
 </html>
 
 <style>
+  @media screen and (max-width: 500px) {
+    h1 {
+      margin-top: 3rem;
+    }
+  }
+
   #contact {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Alatsi", sans-serif;
     padding: 0 2rem;
     max-width: 100ch;
     margin: 0 auto;
@@ -57,15 +94,44 @@ import "../styles/global.css";
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
   }
-  #open-hours {
+  .contact-info-section {
     display: flex;
     flex-direction: column;
-    margin: 1rem;
+    width: 50%;
+    min-width: 200px;
   }
-  #contact-form {
+  #form {
     display: flex;
     flex-direction: column;
-    margin: 1rem;
+    gap: 5px;
+  }
+  #message {
+    resize: vertical;
+  }
+  form > * {
+    border-radius: 5px;
+  }
+  form input {
+    border: 1px solid rgb(50, 50, 50);
+  }
+  textarea {
+    border: 1px solid rgb(50, 50, 50);
+  }
+  #submit-button {
+    width: 100px;
+    height: 40px;
+    margin: 1rem 0;
+    cursor: pointer;
+    border: 1px solid rgb(50, 50, 50);
+    transition: all 0.2s ease-in-out;
+    background-color: #faf2e5;
+  }
+  #submit-button:hover {
+    background-color: #a97f24;
+  }
+  .hide {
+    display: none;
   }
 </style>
