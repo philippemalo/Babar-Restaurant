@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
 import "@fontsource/alatsi";
 import Footer from "../components/Footer.astro";
+import CustomScrollbar from "../components/CustomScrollbar.astro";
 ---
 
 <html lang="en">
@@ -51,6 +52,8 @@ import Footer from "../components/Footer.astro";
             <input type="text" name="name" required />
             <label>Message</label>
             <textarea id="message" name="message" rows="4" required></textarea>
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display:none" />
             <button id="submit-button" type="submit">Envoyer</button>
           </form>
           <h4 id="thankyou-message" class="hide">
@@ -61,13 +64,16 @@ import Footer from "../components/Footer.astro";
     </div>
 
     <Footer />
-    <script defer>
-      let thankyouMessage = document.getElementById("thankyou-message");
-      form.addEventListener("submit", (e) => {
-        thankyouMessage.classList.remove("hide");
-      });
-    </script>
+
+    <CustomScrollbar />
   </body>
+
+  <script defer>
+    let thankyouMessage = document.getElementById("thankyou-message");
+    form.addEventListener("submit", (e) => {
+      thankyouMessage.classList.remove("hide");
+    });
+  </script>
 </html>
 
 <style>

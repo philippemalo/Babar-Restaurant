@@ -8,6 +8,7 @@ import resto from "/resto1.jpg";
 import babar3 from "/Babar_03.svg";
 import babar1 from "/Babar_01.svg";
 import "@fontsource/alatsi";
+import CustomScrollbar from "../components/CustomScrollbar.astro";
 ---
 
 <html lang="en">
@@ -63,6 +64,7 @@ import "@fontsource/alatsi";
       Moyen-Orient.
     </h3>
     <Footer />
+    <CustomScrollbar />
   </body>
 
   <script defer>
@@ -98,30 +100,6 @@ import "@fontsource/alatsi";
         // Apply offset
         pupill.style.transform = "translate(" + xDiff + "px, " + -yDiff + "px)";
       });
-
-      // BABAR LETTERS FILL COLOR CHANGE ON HOVER (WIP, DOESNT WORK AS IT IS)
-      // let babarLetters =
-      //   objectTag.contentDocument.getElementsByClassName("letter");
-
-      // function getRandomItem(arr) {
-      //   const randomIndex = Math.floor(Math.random() * arr.length);
-      //   const item = arr[randomIndex];
-      //   return item;
-      // }
-
-      // for (let i = 0; i < babarLetters.length; i++) {
-      //   console.log(babarLetters.item(i).style.fill);
-      //   babarLetters.item(i).addEventListener("mouseover", () => {
-      //     let possibleColors = [
-      //       "#A87E23",
-      //       "#FFFEFD",
-      //       "rgb(50,50,50)",
-      //       "rgb(252,241,219)",
-      //     ];
-      //     this.style.fill = getRandomItem(possibleColors);
-      //     console.log(letter.style.fill);
-      //   });
-      // }
     });
 
     // ELEPHANT MOVEMENT FUNCTION
@@ -132,13 +110,11 @@ import "@fontsource/alatsi";
 
     addEventListener("scroll", function () {
       let imageRect = image.getBoundingClientRect();
-      console.log(imageRect.y);
       let currentScrollPos = window.scrollY;
       if (currentScrollPos > prevScrollpos) {
         image.style.transform = "scaleX(-1)";
         image.style.left =
           (imageRect.bottom / window.innerHeight) * window.innerWidth + "px";
-        console.log(image.style.left);
       } else if (currentScrollPos < prevScrollpos) {
         image.style.transform = "scaleX(1)";
         image.style.left =
@@ -147,12 +123,12 @@ import "@fontsource/alatsi";
       prevScrollpos = currentScrollPos;
     });
 
+    let mobileNavbar = document.getElementById("mobile-navbar");
+    mobileNavbar.style.bottom = "-120px";
     setTimeout(() => {
-      let mobileNavbar = document.getElementById("mobile-navbar");
       mobileNavbar.style.bottom = "0";
     }, 3000);
   </script>
-
   <script defer src="/_vercel/insights/script.js"></script>
 </html>
 
@@ -213,6 +189,6 @@ import "@fontsource/alatsi";
   #elephant {
     position: relative;
     width: 100px;
-    transition: 0.5s all ease-in-out;
+    transition: 0.3s all ease;
   }
 </style>
