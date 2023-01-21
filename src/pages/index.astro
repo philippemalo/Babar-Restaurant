@@ -146,6 +146,11 @@ import "@fontsource/alatsi";
       }
       prevScrollpos = currentScrollPos;
     });
+
+    setTimeout(() => {
+      let mobileNavbar = document.getElementById("mobile-navbar");
+      mobileNavbar.style.bottom = "0";
+    }, 3000);
   </script>
 </html>
 
@@ -161,12 +166,12 @@ import "@fontsource/alatsi";
       margin-top: 3rem;
     }
     h2 {
-      font-size: larger;
+      font-size: large;
     }
   }
 
   #main-svg {
-    width: 900px;
+    width: 1500px;
     max-width: 90%;
     pointer-events: none;
   }
@@ -175,7 +180,7 @@ import "@fontsource/alatsi";
     width: 700px;
     max-width: 90%;
     border: 3px solid white;
-    margin: 3rem auto;
+    margin: 1rem auto;
   }
 
   h2 {
@@ -183,17 +188,16 @@ import "@fontsource/alatsi";
     font-weight: 100;
     width: 600px;
     max-width: 90%;
-    margin: 0 auto;
+    margin: 1rem auto;
     text-align: center;
     line-height: 1.5;
-    margin-top: 3rem;
   }
   h3 {
     font-family: "Alatsi", sans-serif;
     font-weight: 100;
     width: 600px;
     max-width: 90%;
-    margin: 0 auto;
+    margin: 1rem auto;
     text-align: center;
     line-height: 1.5;
   }
@@ -209,9 +213,4 @@ import "@fontsource/alatsi";
     width: 100px;
     transition: 0.5s all ease-in-out;
   }
-
-  /* .letter:hover {
-    fill: #a87e23;
-    transition: fill 0.3s ease-out;
-  } */
 </style>
