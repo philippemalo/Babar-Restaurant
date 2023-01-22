@@ -3,15 +3,23 @@
   <script defer>
     let scrollbar = document.getElementById("custom-scrollbar");
     let thumb = document.getElementById("scrollbar-thumb");
+    let thumbInUse = false;
 
     thumb.addEventListener("mousedown", (e) => {
       e.preventDefault();
+      thumbInUse = true;
       scrollbar.classList.add("grabbed");
 
       let thumbRect = thumb.getBoundingClientRect();
       let initialCursorY = e.clientY;
 
+      let maxThumbScroll = window.innerHeight - thumbRect.height;
+      let maxPageScroll = document.body.clientHeight - window.innerHeight + 120;
+
       window.onmousemove = (e) => {
+        let currentThumb = document.getElementById("scrollbar-thumb");
+        let currentThumbRect = currentThumb.getBoundingClientRect();
+
         if (thumbRect.top + e.clientY - initialCursorY < 0) {
           // If thumb is at the top
           thumb.style.top = "0px";
@@ -24,16 +32,12 @@
         } else {
           thumb.style.top = thumbRect.top + e.clientY - initialCursorY + "px";
 
-          let maxThumbScroll = window.innerHeight - thumbRect.height;
-          let maxPageScroll = document.body.clientHeight - thumbRect.height;
-          let currentThumb = document.getElementById("scrollbar-thumb");
-          let currentThumbRect = currentThumb.getBoundingClientRect();
-
           let scrollOptions = {
             behavior: "auto",
             top: (currentThumbRect.top / maxThumbScroll) * maxPageScroll,
             left: 0,
           };
+
           window.scrollTo(scrollOptions);
         }
       };
@@ -42,15 +46,19 @@
     addEventListener("mouseup", (e) => {
       scrollbar.classList.remove("grabbed");
       window.onmousemove = null;
+      thumbInUse = false;
     });
 
     addEventListener("scroll", () => {
-      let thumbRect = thumb.getBoundingClientRect();
-      let maxThumbScroll = window.innerHeight - thumbRect.height;
-      let maxPageScroll = document.body.clientHeight - thumbRect.height;
+      if (!thumbInUse) {
+        let thumbRect = thumb.getBoundingClientRect();
+        let maxThumbScroll = window.innerHeight - thumbRect.height;
+        let maxPageScroll =
+          document.body.clientHeight - window.innerHeight + 120;
 
-      thumb.style.top =
-        (window.scrollY / maxPageScroll) * maxThumbScroll + "px";
+        thumb.style.top =
+          (window.scrollY / maxPageScroll) * maxThumbScroll + "px";
+      }
     });
   </script>
 </span>
@@ -93,6 +101,7 @@
     height: 142px;
     z-index: 4;
     transition: width 0.3s ease;
+    border: 1px solid sandybrown;
   }
 
   #scrollbar-thumb:hover {
