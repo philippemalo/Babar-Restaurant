@@ -6,6 +6,9 @@ import takeoutIcon from "/takeout.png";
 import calendarIcon from "/calendar.png";
 
 import "@fontsource/alatsi";
+
+const bookenda =
+  "https://www.tbdine.com/book/restaurant/restaurant-babar?idApp=71062&language=en-us";
 ---
 
 <div id="mobile-navbar">
@@ -24,7 +27,7 @@ import "@fontsource/alatsi";
     <p>COMMANDER</p>
     <img class="icon" src={takeoutIcon} />
   </a>
-  <a class="button" href="/Reservation">
+  <a class="button" href={bookenda}>
     <p>RÉSERVER</p>
     <img class="icon" src={calendarIcon} />
   </a>
