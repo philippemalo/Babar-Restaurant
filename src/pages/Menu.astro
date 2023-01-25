@@ -1,5 +1,6 @@
 ---
 import CustomScrollbar from "../components/CustomScrollbar.astro";
+import Footer from "../components/Footer.astro";
 import MobileNavbar from "../components/MobileNavbar.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
@@ -17,7 +18,14 @@ import "../styles/global.css";
   <body
     ><Navbar />
     <MobileNavbar />
-    <div>Bientôt disponible...</div>
+    <div id="menu">
+      <img src="/Menu_food.jpg" alt="Food menu" />
+    </div>
+    <div id="menu-mobile">
+      <img src="/Menu_food_mobile1.jpg" alt="Food menu mobile 1" />
+      <img src="/Menu_food_mobile2.jpg" alt="Food menu mobile 2" />
+    </div>
+    <Footer />
     <CustomScrollbar />
   </body>
 </html>
@@ -28,5 +36,33 @@ import "../styles/global.css";
   }
   div {
     margin: auto;
+  }
+  #menu {
+    max-width: 90%;
+  }
+  #menu img {
+    width: 100%;
+  }
+  #menu-mobile {
+    max-width: 90%;
+  }
+  #menu-mobile img {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 651px) {
+    #menu-mobile {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    body {
+      margin-top: 2rem;
+    }
+  }
+  @media screen and (max-width: 650px) {
+    #menu {
+      display: none;
+    }
   }
 </style>
