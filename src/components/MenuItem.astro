@@ -1,0 +1,45 @@
+---
+import "@fontsource/alatsi";
+
+const { title, description, price, imagePortrait, imageLandscape } =
+  Astro.props;
+---
+
+<div class="menu-item">
+  <div class="menu-item-header">
+    <h3>{title}</h3>
+    <h3 class="price">{price}</h3>
+  </div>
+  {description && <p class="menu-item-desc">{description}</p>}
+</div>
+
+<style>
+  .menu-item {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin: 3px 0;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    font-family: "Alatsi", sans-serif;
+  }
+  .menu-item-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .menu-item-desc {
+  }
+  h3 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  .price {
+    margin-left: 1rem;
+  }
+</style>

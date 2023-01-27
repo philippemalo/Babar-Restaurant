@@ -4,6 +4,8 @@ import Footer from "../components/Footer.astro";
 import MobileNavbar from "../components/MobileNavbar.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
+import MenuItem from "../components/MenuItem.astro";
+import MenuContent from "../js/MenuContent";
 ---
 
 <html lang="en">
@@ -15,54 +17,115 @@ import "../styles/global.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Menu</title>
   </head>
-  <body
-    ><Navbar />
+  <body>
+    <Navbar />
     <MobileNavbar />
-    <div id="menu">
-      <img src="/Menu_food.jpg" alt="Food menu" />
+    <div id="main-container">
+      <div id="menu-img-container">
+        <img src="/foodPics/tomato_portrait.jpg" />
+      </div>
+
+      <div id="menu-container">
+        {
+          MenuContent.map((menuItem, index) => (
+            <MenuItem
+              id={index}
+              title={menuItem.title}
+              description={menuItem.description}
+              price={menuItem.price}
+            />
+          ))
+        }
+      </div>
     </div>
-    <div id="menu-mobile">
-      <img src="/Menu_food_mobile1.jpg" alt="Food menu mobile 1" />
-      <img src="/Menu_food_mobile2.jpg" alt="Food menu mobile 2" />
-    </div>
+
     <Footer />
     <CustomScrollbar />
   </body>
+  <script type="module" defer>
+    import MenuContent from "../src/js/MenuContent.ts";
+
+    const menuImgContainer = document.querySelector("#menu-img-container");
+
+    let selectedMenuItem = null;
+    let menuContentItem = null;
+
+    const menuItems = document.querySelectorAll(".menu-item");
+    menuItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        // If a menu item is already selected and the user selects another
+        if (selectedMenuItem && item !== selectedMenuItem) {
+          selectedMenuItem.style.borderColor = "transparent";
+          selectedMenuItem.style.backgroundColor = null;
+        }
+
+        // If the user selects a menu item that isn't already selected
+        if (selectedMenuItem !== item) {
+          selectedMenuItem = item;
+          menuContentItem = MenuContent.find(
+            (food) =>
+              food.title ===
+              item.firstElementChild.firstElementChild.textContent
+          );
+
+          item.style.borderColor = "black";
+          selectedMenuItem.style.backgroundColor = "#F0BD3F";
+          menuImgContainer.style.display = "block";
+        }
+        // If the user selects a menu item that is already selected
+        else {
+          selectedMenuItem = null;
+          menuContentItem = null;
+          item.style.borderColor = "transparent";
+          item.style.backgroundColor = null;
+          menuImgContainer.style.display = "none";
+        }
+      });
+    });
+  </script>
 </html>
 
 <style>
-  * {
-    font-family: "Alatsi", sans-serif;
+  #main-container {
+    display: flex;
+    height: calc(100vh - 200px);
   }
-  div {
-    margin: auto;
-  }
-  #menu {
-    max-width: 90%;
-  }
-  #menu img {
-    width: 100%;
-  }
-  #menu-mobile {
-    max-width: 90%;
-  }
-  #menu-mobile img {
-    width: 100%;
+  #menu-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: calc(100vh - 200px);
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: 5px;
+    max-width: 500px;
+    box-shadow: inset 0 0 10px #0000004f;
+    transition: all 0.3s ease-in-out;
   }
 
-  @media screen and (min-width: 651px) {
-    #menu-mobile {
-      display: none;
-    }
+  #menu-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    overflow: hidden;
+    margin: 1rem auto;
+    height: calc(100vh - 200px);
+    display: none;
+  }
+  #menu-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   @media screen and (max-width: 500px) {
-    body {
-      margin-top: 2rem;
+    #menu-container {
+      height: calc(100vh - 150px);
+      max-width: 90%;
     }
   }
-  @media screen and (max-width: 650px) {
-    #menu {
-      display: none;
+  @media screen and (min-width: 501px) {
+    #menu-container {
     }
   }
 </style>
