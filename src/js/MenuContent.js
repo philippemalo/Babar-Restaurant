@@ -1,11 +1,12 @@
-interface MenuItem {
-  title: string;
-  description?: string;
-  price: string;
-  imagePortrait: string;
-  imageLandscape: string;
-}
-const MenuContent: MenuItem[] = [
+// interface MenuItem {
+//   title: string;
+//   description?: string;
+//   price: string;
+//   imagePortrait: string;
+//   imageLandscape: string;
+// }
+// const MenuContent: MenuItem[] = [
+const MenuContent = [
   {
     title: "Olives, zaatar et citron",
     description: "",
