@@ -24,8 +24,8 @@ const MenuContent: MenuItem[] = [
     title: "Hummus",
     description: "Purée de pois chiche, huile d'olive et citron",
     price: "13",
-    imagePortrait: "/foodPics/tomato_portrait.jpg",
-    imageLandscape: "/foodPics/tomato_landscape.jpg",
+    imagePortrait: "/foodPics/Hummus_Portrait.jpg",
+    imageLandscape: "/foodPics/Hummus_Landscape.jpg",
   },
   {
     title: "Mutabbal*",

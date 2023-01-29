@@ -20,9 +20,9 @@ import MenuContent from "../js/MenuContent";
   <body>
     <Navbar />
     <MobileNavbar />
+
     <div id="main-container">
       <div id="menu-img-container">
-        <img id="food-image" src="/foodPics/tomato_portrait.jpg" />
         <img id="deselect" src="/cancel_button.svg" />
       </div>
 
@@ -46,6 +46,7 @@ import MenuContent from "../js/MenuContent";
   <script type="module" defer>
     import MenuContent from "../src/js/MenuContent.ts";
 
+    const mainContainer = document.querySelector("#main-container");
     const menuImgContainer = document.querySelector("#menu-img-container");
     const deselectButton = document.querySelector("#deselect");
 
@@ -58,7 +59,32 @@ import MenuContent from "../js/MenuContent";
       menuImgContainer.style.display = "none";
       selectedMenuItem = null;
       menuContentItem = null;
+      let imgToRemove = document.getElementById("food-image");
+      imgToRemove.remove();
     });
+
+    const aspectRatioStyling = () => {
+      let aspectRatio = window.innerWidth / window.innerHeight;
+
+      if (aspectRatio < 1) {
+        mainContainer.style.flexDirection = "column";
+        mainContainer.style.alignItems = "center";
+        menuImgContainer.style.width = "100%";
+        menuImgContainer.style.maxHeight = "30vh";
+        menuImgContainer.style.maxWidth = "500px";
+        menuImgContainer.style.margin = "auto";
+        // update image for portrait to landscape
+        menuImgContainer.firstElementChild.src = menuContentItem.imageLandscape;
+      } else {
+        mainContainer.style.flexDirection = "row";
+        menuImgContainer.style.width = "50%";
+        menuImgContainer.style.maxWidth = "750px";
+        menuImgContainer.style.maxHeight = "calc(100vh - 200px)";
+        menuImgContainer.style.margin = "1rem";
+        // update image for landscape to portrait
+        menuImgContainer.firstElementChild.src = menuContentItem.imagePortrait;
+      }
+    };
 
     const menuItems = document.querySelectorAll(".menu-item");
     menuItems.forEach((item) => {
@@ -67,6 +93,8 @@ import MenuContent from "../js/MenuContent";
         if (selectedMenuItem && item !== selectedMenuItem) {
           selectedMenuItem.style.borderColor = "transparent";
           selectedMenuItem.style.backgroundColor = null;
+          let imgToRemove = document.getElementById("food-image");
+          imgToRemove.remove();
         }
 
         // If the user selects a menu item that isn't already selected
@@ -81,6 +109,17 @@ import MenuContent from "../js/MenuContent";
           item.style.borderColor = "black";
           selectedMenuItem.style.backgroundColor = "#F0BD3F";
           menuImgContainer.style.display = "block";
+
+          let imgElement = document.createElement("img");
+          imgElement.id = "food-image";
+          imgElement.src =
+            window.innerWidth / window.innerHeight > 1
+              ? menuContentItem.imagePortrait
+              : menuContentItem.imageLandscape;
+          imgElement.style.width = "100%";
+          imgElement.style.height = "100%";
+          imgElement.style.objectFit = "cover";
+          menuImgContainer.insertBefore(imgElement, deselectButton);
         }
         // If the user selects a menu item that is already selected
         else {
@@ -88,24 +127,32 @@ import MenuContent from "../js/MenuContent";
           menuContentItem = null;
           item.style.borderColor = "transparent";
           item.style.backgroundColor = null;
+          let imgToRemove = document.getElementById("food-image");
+          imgToRemove.remove();
           menuImgContainer.style.display = "none";
         }
+
+        aspectRatioStyling();
       });
     });
+
+    addEventListener("resize", () => aspectRatioStyling());
   </script>
 </html>
 
 <style>
   #main-container {
     display: flex;
-    height: calc(100vh - 200px);
+    width: 100%;
+    justify-content: center;
+    /* height: calc(100vh - 200px); */
   }
   #menu-container {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
     height: calc(100vh - 200px);
-    margin: 1rem auto;
+    margin: 1rem;
     padding: 1rem;
     border-radius: 5px;
     max-width: 500px;
@@ -118,28 +165,29 @@ import MenuContent from "../js/MenuContent";
     align-items: center;
     justify-content: center;
     width: 50%;
+    max-width: 750px;
     overflow: hidden;
-    margin: 1rem auto;
+    margin: 1rem;
     height: calc(100vh - 200px);
     display: none;
     position: relative;
-  }
-  #food-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    border-radius: 5px;
   }
   #deselect {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    max-width: 50px;
-    max-height: 50px;
+    top: 10px;
+    right: 10px;
+    width: 33px;
+    height: 33px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  #deselect:hover {
+    width: 36px;
+    height: 36px;
   }
   @media screen and (max-width: 500px) {
     #menu-container {
-      height: calc(100vh - 150px);
       max-width: 90%;
     }
   }
