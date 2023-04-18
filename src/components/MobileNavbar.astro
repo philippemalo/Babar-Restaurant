@@ -2,7 +2,6 @@
 import navLogo from "/Babar_05.svg";
 import menuIcon from "/menu.png";
 import drinksIcon from "/wine.png";
-import takeoutIcon from "/takeout.png";
 import calendarIcon from "/calendar.png";
 
 import "@fontsource/alatsi";
@@ -12,6 +11,9 @@ const bookenda =
 ---
 
 <div id="mobile-navbar">
+  <a href="/">
+    <img id="navLogo" src={navLogo} alt="mobile logo" />
+  </a>
   <a class="button" href="/Menu">
     <p>MANGER</p>
     <img class="icon" src={menuIcon} />
@@ -19,13 +21,6 @@ const bookenda =
   <a class="button" href="/Drinks">
     <p>BOIRE</p>
     <img class="icon" src={drinksIcon} />
-  </a>
-  <a href="/">
-    <img id="navLogo" src={navLogo} alt="mobile logo" />
-  </a>
-  <a class="button" href="/Takeout">
-    <p>COMMANDER</p>
-    <img class="icon" src={takeoutIcon} />
   </a>
   <a class="button" href={bookenda} target="_blank">
     <p>RÉSERVER</p>
@@ -56,7 +51,7 @@ const bookenda =
     cursor: pointer;
     height: 100%;
   }
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 320px) {
     p {
       display: none;
     }
