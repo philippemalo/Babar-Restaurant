@@ -13,21 +13,17 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="" type="" href="" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Menu</title>
+    <title>Pour emporter</title>
     <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <body>
     <Navbar />
     <MobileNavbar />
-    <div id="menu">
-      <img src="/Menu_food.jpg" alt="Food menu" />
-      <img src="/Babar-Menu-Midi_2023_Verso_Large.jpg" alt="Lunch menu" />
+
+    <div id="takeout-menu">
+      <img src="/Babar_Menu-Takeout_Verso_Large.jpg" alt="Menu takeout" />
     </div>
-    <div id="menu-mobile">
-      <img src="/Menu_food_mobile1.jpg" alt="Food menu mobile 1" />
-      <img src="/Menu_food_mobile2.jpg" alt="Food menu mobile 2" />
-      <img src="/Babar-Menu-Midi_2023_Verso_Large.jpg" alt="Lunch menu" />
-    </div>
+
     <Footer />
     <CustomScrollbar />
   </body>
@@ -40,32 +36,21 @@ import "../styles/global.css";
   div {
     margin: auto;
   }
-  #menu {
-    max-width: 75%;
+  #takeout-menu {
+    width: 75%;
   }
-  #menu img {
+  #takeout-menu img {
     width: 100%;
-  }
-  #menu-mobile {
-    max-width: 90%;
-  }
-  #menu-mobile img {
-    width: 100%;
-  }
-
-  @media screen and (min-width: 651px) {
-    #menu-mobile {
-      display: none;
-    }
   }
   @media screen and (max-width: 500px) {
+    #takeout-menu {
+      width: 90%;
+    }
+    #takeout-menu img {
+      width: 100%;
+    }
     body {
       margin-top: 2rem;
-    }
-  }
-  @media screen and (max-width: 650px) {
-    #menu {
-      display: none;
     }
   }
 </style>
