@@ -21,6 +21,16 @@ import "../styles/global.css";
     <MobileNavbar />
 
     <div id="takeout-menu">
+      <div id="takeout-info">
+        <h3>
+          Commandes par téléphone (450-726-0726) - Mardi au Samedi de 11h00 à
+          14h30
+        </h3>
+        <p>
+          * Les commandes passées avant 14h30 peuvent être récupérées au plus
+          tard à 17h00!
+        </p>
+      </div>
       <img src="/Babar_Menu-Takeout_Verso_Large.jpg" alt="Menu takeout" />
     </div>
 
@@ -33,10 +43,15 @@ import "../styles/global.css";
   * {
     font-family: "Alatsi", sans-serif;
   }
-  div {
-    margin: auto;
+  #takeout-info {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   #takeout-menu {
+    margin: auto;
     width: 75%;
   }
   #takeout-menu img {
