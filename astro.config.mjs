@@ -9,4 +9,5 @@ export default defineConfig({
   integrations: [react()],
   output: "server",
   adapter: vercel(),
+  site: "https://www.restaurantbabar.com",
 });
