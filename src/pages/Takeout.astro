@@ -23,9 +23,10 @@ import "../styles/global.css";
     <div id="takeout-menu">
       <div id="takeout-info">
         <h3>
-          Commandes par téléphone (450-726-0726) - Mardi au Samedi de 11h00 à
-          14h30
+          Commandes par téléphone <a href="tel:450-726-0726">(450-726-0726)</a>
         </h3>
+        <h4>Mardi au jeudi de 11h30 à 21h30</h4>
+        <h4>Vendredi et samedi de 11h30 à 17h00</h4>
         <p>
           * Les commandes passées avant 14h30 peuvent être récupérées au plus
           tard à 17h00!
@@ -33,10 +34,10 @@ import "../styles/global.css";
       </div>
       <img src="/Babar_Menu-Takeout_Verso_Large.jpg" alt="Menu takeout" />
     </div>
-
-    <Footer />
-    <CustomScrollbar />
   </body>
+
+  <Footer />
+  <CustomScrollbar />
 </html>
 
 <style>
@@ -49,6 +50,13 @@ import "../styles/global.css";
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  #takeout-info h4 {
+    margin: 0;
+  }
+  #takeout-info a {
+    text-decoration: none;
+    color: inherit;
   }
   #takeout-menu {
     margin: auto;
