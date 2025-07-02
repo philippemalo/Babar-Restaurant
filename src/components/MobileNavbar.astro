@@ -1,9 +1,9 @@
 ---
-import navLogo from "/Babar_05.svg";
-import menuIcon from "/menu.png";
-import drinksIcon from "/wine.png";
-import takeoutIcon from "/takeout.png";
-import calendarIcon from "/calendar.png";
+import navLogo from "../../public/Babar_05.svg";
+import menuIcon from "../../public/menu.png";
+import drinksIcon from "../../public/wine.png";
+import takeoutIcon from "../../public/takeout.png";
+import calendarIcon from "../../public/calendar.png";
 
 import "@fontsource/alatsi";
 
@@ -14,22 +14,22 @@ const bookenda =
 <div id="mobile-navbar">
   <a class="button" href="/Menu">
     <p>MANGER</p>
-    <img class="icon" src={menuIcon} />
+    <img class="icon" src={menuIcon.src} />
   </a>
   <a class="button" href="/Drinks">
     <p>BOIRE</p>
-    <img class="icon" src={drinksIcon} />
+    <img class="icon" src={drinksIcon.src} />
   </a>
   <a href="/">
-    <img id="navLogo" src={navLogo} alt="mobile logo" />
+    <img id="navLogo" src={navLogo.src} alt="mobile logo" />
   </a>
   <a class="button" href="/Takeout">
     <p>COMMANDER</p>
-    <img class="icon" src={takeoutIcon} />
+    <img class="icon" src={takeoutIcon.src} />
   </a>
   <a class="button" href={bookenda} target="_blank">
     <p>RÉSERVER</p>
-    <img class="icon" src={calendarIcon} />
+    <img class="icon" src={calendarIcon.src} />
   </a>
   <script defer>
     const url = window.location.pathname;

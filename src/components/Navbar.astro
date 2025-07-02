@@ -1,7 +1,7 @@
 ---
 import "@fontsource/alatsi";
-import elephantRight from "/favicon.svg";
-import elephantLeft from "/favicon_left.svg";
+import elephantRight from "../../public/favicon.svg";
+import elephantLeft from "../../public/favicon_left.svg";
 
 const bookenda =
   "https://www.tbdine.com/book/restaurant/restaurant-babar?idApp=71062&language=fr";
@@ -9,7 +9,7 @@ const bookenda =
 
 <div id="navbar">
   <a href="/">
-    <img src={elephantRight} alt="Logo left" />
+    <img src={elephantRight.src} alt="Logo left" />
   </a>
   <a class="hover-effect" href="/Menu">Menu</a>
   <a class="hover-effect" href="/Drinks">À boire</a>
@@ -17,7 +17,7 @@ const bookenda =
   <a class="hover-effect" href={bookenda} target="_blank">Réservation</a>
   <a class="hover-effect" href="/Contact">Contact</a>
   <a href="/">
-    <img src={elephantLeft} alt="Logo right" />
+    <img src={elephantLeft.src} alt="Logo right" />
   </a>
   <script>
     let prevScrollpos = window.pageYOffset;

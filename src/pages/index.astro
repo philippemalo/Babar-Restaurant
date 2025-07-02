@@ -4,8 +4,8 @@ import Intro from "../components/Intro.astro";
 import Navbar from "../components/Navbar.astro";
 import MobileNavbar from "../components/MobileNavbar.astro";
 import Footer from "../components/Footer.astro";
-import resto from "/resto1.jpg";
-import babar1 from "/Babar_01.svg";
+import resto from "../../public/resto1.jpg";
+import babar1 from "../../public/Babar_01.svg";
 import "@fontsource/alatsi";
 import CustomScrollbar from "../components/CustomScrollbar.astro";
 ---
@@ -36,15 +36,15 @@ import CustomScrollbar from "../components/CustomScrollbar.astro";
     <MobileNavbar />
 
     <div id="main-container">
-      <object id="main-svg" type="image/svg+xml" data={babar1}>
-        <img src={babar1} alt="Main logo" />
+      <object id="main-svg" type="image/svg+xml" data={babar1.src}>
+        <img src={babar1.src} alt="Main logo" />
       </object>
     </div>
     <h2>
       Découvrez les saveurs audacieuses et vibrantes du Moyen-Orient au cœur de
       Bromont.
     </h2>
-    <img id="restoImg" src={resto} alt="Coming soon image" />
+    <img id="restoImg" src={resto.src} alt="Coming soon image" />
 
     <h3>
       Nous apprécions profondément la cuisine riche et savoureuse du
