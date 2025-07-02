@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "app/**": {
+      "runtime": "nodejs20.x"
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
