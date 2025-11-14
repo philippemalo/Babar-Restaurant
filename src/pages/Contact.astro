@@ -5,6 +5,9 @@ import "../styles/global.css";
 import "@fontsource/alatsi";
 import Footer from "../components/Footer.astro";
 import CustomScrollbar from "../components/CustomScrollbar.astro";
+
+const bookenda =
+  "https://www.tbdine.com/book/restaurant/restaurant-babar?idApp=71062&language=fr"
 ---
 
 <html lang="en">
@@ -23,11 +26,11 @@ import CustomScrollbar from "../components/CustomScrollbar.astro";
     <div id="contact">
       <h1>Contact</h1>
       <p>
-        N’hésitez pas à nous contacter avec les coordonnées ci-dessous ou à
-        envoyer un message en utilisant le formulaire.
+        * Aucune commande par courriel — veuillez visiter la page <a href="/Takeout"><u>la page prévue à cet effet</u></a>
       </p>
       <p>
-        * Veuillez ne pas utiliser le formulaire pour effectuer une commande.
+        * Aucune réservation par courriel — veuillez utiliser notre 
+        <a href={bookenda}><u>plateforme de réservation</u></a>.
       </p>
       <div id="contact-info">
         <div class="contact-info-section">
